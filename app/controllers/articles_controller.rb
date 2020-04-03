@@ -7,9 +7,12 @@ class ArticlesController < ApplicationController
   def create 
   @article = Article.new(article_params)
 
-  @article.save
-  redirect_to @article   # В чем разница????
-  #render action: 'show'
+    if @article.save
+      redirect_to @article   # В чем разница????
+    #render action: 'show'
+    else
+      render 'new'
+    end
   end
 
   def show
